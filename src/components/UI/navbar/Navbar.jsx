@@ -18,17 +18,9 @@ export const Navbar = () => {
         setMenuIsOpen(!menuIsOpen);
     };
 
-    const handleScroll = () => {
-        if (menuIsOpen === true) {
-            document.querySelector("body").style.overflow = "hidden";
-        } else {
-            document.querySelector("body").style.overflow = "auto";
-        }
-    };
-
     useEffect(() => {
-        handleScroll();
-    }, [handleMenu]);
+        document.body.style.overflow = menuIsOpen ? "hidden" : "auto";
+    }, [menuIsOpen]);
     return (
         <header>
             <div className={styles.Navbar}>
