@@ -15,6 +15,14 @@
     align-items: center;
     margin-bottom: 200px;
 }
+
+.formContent {
+    width: 908px;
+    max-width: 908px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .subtitle {
     margin-top: 39px;
     max-width: 561px;
@@ -23,6 +31,11 @@
 .inputWrapper {
     border-bottom: 1px solid #d8d8d8;
     width: 396px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #707070;
+    position: relative;
 }
 
 .contentRow {
@@ -31,6 +44,30 @@
     width: 100%;
     flex-wrap: wrap;
     margin-top: 94px;
+}
+
+.select {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 12px 2px;
+    font-size: 16px;
+    color: #707070;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.select:focus {
+    outline: none;
+}
+
+.selectIco {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    cursor: pointer;
 }
 
 .textarea {
