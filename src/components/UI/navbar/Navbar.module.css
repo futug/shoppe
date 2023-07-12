@@ -1,0 +1,144 @@
+.Navbar {
+    padding-top: 64px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logoGroup {
+    position: relative;
+    width: 100px;
+}
+
+.logo {
+    width: 99px;
+    height: auto;
+}
+
+.rightSide {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+}
+
+.linkGroup {
+    display: flex;
+    gap: 64px;
+}
+
+.link::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    display: block;
+    transition: width 0.3s ease-in-out;
+}
+
+.link:hover::after {
+    width: 100%;
+}
+
+.separator {
+    height: 17px;
+    width: 1px;
+    background-color: #707070;
+}
+
+.interactive {
+    display: flex;
+    gap: 39px;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.searchField {
+    /* position: absolute;
+    top: 105%; */
+    display: none;
+    align-items: center;
+    background-color: #d8d8d8;
+    border-radius: 8px;
+    width: 100%;
+    justify-content: flex-end;
+    transition: 0.3s ease-in-out;
+}
+
+.searchInput {
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+}
+
+.searchField > svg {
+    padding-right: 0.5rem;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.searchField:hover {
+    background-color: #e1dfdf;
+}
+
+.burger {
+    display: none;
+}
+.menu {
+    position: fixed;
+    background-color: #fff;
+    width: 100vw;
+    z-index: 999;
+    left: 0;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.myAcc {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menuSeparator {
+    height: 1px;
+    background-color: #707070;
+}
+.content {
+    margin-top: 30%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    /* transform: translateY(-30%); */
+}
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+    }
+    .linkGroup {
+        display: none;
+    }
+    .separator {
+        display: none;
+    }
+    .searchBlock {
+        display: none;
+    }
+    .signBlock {
+        display: none;
+    }
+    .interactive {
+        gap: 17px;
+    }
+}

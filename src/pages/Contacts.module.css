@@ -1,0 +1,109 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.content {
+    width: 908px;
+    max-width: 908px;
+
+    padding-top: 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 200px;
+}
+.subtitle {
+    margin-top: 39px;
+    max-width: 561px;
+}
+
+.inputWrapper {
+    border-bottom: 1px solid #d8d8d8;
+    width: 396px;
+}
+
+.contentRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 94px;
+}
+
+.textarea {
+    margin-top: 126px;
+    width: 100%;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.textarea > textarea {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding-bottom: 44px;
+    resize: none;
+    font-size: 16px;
+}
+
+.textarea > textarea::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    margin: 10px 0;
+}
+
+.textarea > textarea:focus {
+    outline: none;
+}
+.button {
+    margin-top: 64px;
+    padding: 16px 229px;
+    text-transform: uppercase;
+    background-color: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    display: block;
+}
+
+.button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+@media (max-width: 928px) {
+    .content {
+        width: 396px;
+    }
+
+    .contentRow {
+        flex-direction: column;
+        gap: 47px;
+        align-items: center;
+        margin-top: 47px;
+    }
+
+    .textarea {
+        margin-top: 47px;
+    }
+}
+
+@media (max-width: 575px) {
+    .subtitle {
+        display: none;
+    }
+    .content {
+        width: 300px;
+    }
+    .inputWrapper {
+        max-width: 288px;
+    }
+    .button {
+        padding: 6px 128px;
+    }
+}

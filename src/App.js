@@ -1,0 +1,17 @@
+import "./App.css";
+import React from "react";
+import { Navbar } from "./components/UI/navbar/Navbar";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+
+function App() {
+    return (
+        <div className="App">
+            <Navbar />
+            <Main />
+            <Footer />
+        </div>
+    );
+}
+
+export default App;
