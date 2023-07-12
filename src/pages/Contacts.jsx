@@ -27,15 +27,13 @@ export const Contacts = () => {
                         <div className={styles.inputWrapper}>
                             <BigEmailInput type={"email"} placeholder={"Email"} />
                         </div>
-                        <div>
-                            <div className={styles.inputWrapper}>
-                                <select className={styles.select} name="subject" id="subject">
-                                    <option value="somesub1">Some sobject</option>
-                                    <option value="somesub2">Some sobject 2</option>
-                                </select>
-                                <div className={styles.selectIco}>
-                                    <AiOutlineDown />
-                                </div>
+                        <div className={styles.inputWrapper}>
+                            <select className={styles.select} name="subject" id="subject">
+                                <option value="somesub1">Some sobject</option>
+                                <option value="somesub2">Some sobject 2</option>
+                            </select>
+                            <div className={styles.selectIco}>
+                                <AiOutlineDown />
                             </div>
                         </div>
                     </div>
