@@ -9,6 +9,7 @@ import BigPasswordInput from "../inputs/bigpasswordinput/BigPasswordInput";
 
 const SignForm = () => {
     const [isClicked, setIsClicked] = useState(true);
+    const [innerWidth] = useState(window.innerWidth);
 
     const handleClick = () => {
         setIsClicked(!isClicked);
@@ -17,7 +18,10 @@ const SignForm = () => {
     return (
         <div>
             <div className={styles.slideSwitcherField}>
-                <div className={styles.slideSwitcherBg} style={isClicked ? null : { transform: "translateX(100%)" }}></div>
+                <div
+                    className={styles.slideSwitcherBg}
+                    style={isClicked ? { transform: "translateX(0)", left: "5px" } : { transform: "translateX(100%)", left: innerWidth < 575 ? null : "5px" }}
+                ></div>
 
                 <div onClick={handleClick} className={styles.slideSwitcherOption}>
                     <H3>Sign In</H3>
