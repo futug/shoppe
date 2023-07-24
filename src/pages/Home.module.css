@@ -1,16 +1,40 @@
+.preLoader {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .slideWrapper {
     width: 100%;
-    height: 650px;
+    max-height: 650px;
     overflow: hidden;
     border-radius: 16px;
+    margin-top: 50px;
+    position: relative;
 }
 
 .slideImage {
     width: 100%;
-    height: 100%;
+    max-height: 650px;
     object-fit: cover;
 }
+
+.slideContent {
+    position: absolute;
+    width: fit-content;
+    height: 100%;
+    color: #fff;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5%;
+}
 .productsTitleGroup {
+    margin-top: 64px;
     margin-bottom: -47px;
     display: flex;
     justify-content: space-between;
@@ -35,6 +59,38 @@
     margin-top: 86px;
     max-width: 377px;
     width: 377px;
+}
+
+.slideTitle {
+    font-size: 33px;
+}
+
+.slideDescription {
+    font-size: 26px;
+    margin-top: 16px;
+}
+
+.slideButtonWrapper {
+    margin-top: 48px;
+}
+
+.slideButton {
+    padding: 13px 29px;
+    background-color: transparent;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 21px;
+    font-weight: 700;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    cursor: pointer;
+    display: block;
+}
+
+.slideButton:hover {
+    color: #000;
+    background-color: #fff;
 }
 
 .productImageWrapper {
@@ -129,4 +185,88 @@
 }
 .productImageWrapper:hover .interactiveOverlay {
     opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .productCard {
+        width: 320px;
+    }
+}
+
+@media (max-width: 690px) {
+    .productCard {
+        width: 280px;
+    }
+}
+
+@media (max-width: 610px) {
+    .productCard {
+        width: 270px;
+    }
+}
+@media (max-width: 575px) {
+    .slideWrapper {
+        height: 354px;
+    }
+    .slideImage {
+        height: 354px;
+    }
+
+    .slideContent {
+        margin-top: 15%;
+    }
+    .slideTitle {
+        font-size: 20px;
+    }
+
+    .slideDescription {
+        font-size: 12px;
+    }
+
+    .slideButtonWrapper {
+        margin-top: 12px;
+    }
+
+    .slideButton {
+        padding: 6px 10px;
+        font-size: 12px;
+        border: 1px solid #fff;
+    }
+
+    .productCard {
+        width: 240px;
+    }
+    .productTitle {
+        font-size: 14px;
+    }
+    .productPrice {
+        font-size: 14px;
+    }
+    .productsLink {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 530px) {
+    .productCard {
+        width: 200px;
+    }
+}
+
+@media (max-width: 440px) {
+    .productCard {
+        width: 180px;
+    }
+}
+
+@media (max-width: 375px) {
+    .productCard {
+        width: 160px;
+    }
+}
+
+@media (max-width: 320px) {
+    .productCard {
+        width: 136px;
+    }
 }

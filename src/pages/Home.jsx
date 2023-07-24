@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../feauters/products/productsSlice";
-import styles from "./Home.module.css";
+
 import { AiOutlineShoppingCart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
 import H1 from "../components/UI/Typography/h1/H1";
+
 import { Link } from "react-router-dom";
 import { getSlides } from "../feauters/salesSlider/salesSliderSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import "swiper/css/pagination";
+import styles from "./Home.module.css";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -20,7 +22,7 @@ const Home = () => {
         dispatch(getSlides());
     }, [dispatch]);
 
-    const { productsList } = useSelector((state) => state.products);
+    const { productsList, isLoading } = useSelector((state) => state.products);
     const { salesSliderList } = useSelector((state) => state.salesSlider);
 
     const getRandomProducts = (products, count) => {
@@ -30,22 +32,38 @@ const Home = () => {
 
     const randomProducts = getRandomProducts(productsList, 6);
 
-    console.log(salesSliderList);
+    if (isLoading) {
+        return (
+            <div className={styles.preLoader}>
+                <div>Loading goods for you...</div>
+            </div>
+        );
+    }
 
     return (
         <div>
             <Swiper
-                modules={[Pagination]}
+                modules={[Pagination, Autoplay]}
                 spaceBetween={0}
                 slidesPerView={1}
                 pagination={{ clickable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }}
+                loop={true}
             >
                 {salesSliderList.map((slide) => (
                     <SwiperSlide key={slide.id}>
                         <div className={styles.slideWrapper}>
                             <img className={styles.slideImage} src={slide.attributes.url} alt="product example" />
+                            <div className={styles.slideContent}>
+                                <p className={styles.slideTitle}>Get Our Special</p>
+                                <p className={styles.slideDescription}>From $ 295</p>
+                                <Link className={styles.slideButtonWrapper} to={"/Shop"}>
+                                    <button className={styles.slideButton}>View Products</button>
+                                </Link>
+                            </div>
                         </div>
                     </SwiperSlide>
                 ))}
