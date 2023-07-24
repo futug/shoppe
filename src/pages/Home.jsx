@@ -34,7 +34,7 @@ const Home = () => {
 
     return (
         <div>
-            <Swiper
+            {/* <Swiper
                 // install Swiper modules
                 modules={[Pagination]}
                 spaceBetween={0}
@@ -50,7 +50,7 @@ const Home = () => {
                         </div>
                     </SwiperSlide>
                 ))}
-            </Swiper>
+            </Swiper> */}
 
             <div className={styles.productsTitleGroup}>
                 <H1>Shop the latest</H1>
