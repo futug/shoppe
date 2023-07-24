@@ -125,7 +125,7 @@
 }
 
 .productImageWrapper:hover .productImage {
-    transform: scale(2.5) rotate(180deg);
+    transform: scale(2.5);
 }
 .productImageWrapper:hover .interactiveOverlay {
     opacity: 1;

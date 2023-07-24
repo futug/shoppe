@@ -34,8 +34,7 @@ const Home = () => {
 
     return (
         <div>
-            {/* <Swiper
-                // install Swiper modules
+            <Swiper
                 modules={[Pagination]}
                 spaceBetween={0}
                 slidesPerView={1}
@@ -43,14 +42,14 @@ const Home = () => {
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log("slide change")}
             >
-                {salesSliderList.data.map((slide) => (
-                    <SwiperSlide>
+                {salesSliderList.map((slide) => (
+                    <SwiperSlide key={slide.id}>
                         <div className={styles.slideWrapper}>
                             <img className={styles.slideImage} src={slide.attributes.url} alt="product example" />
                         </div>
                     </SwiperSlide>
                 ))}
-            </Swiper> */}
+            </Swiper>
 
             <div className={styles.productsTitleGroup}>
                 <H1>Shop the latest</H1>
@@ -63,7 +62,7 @@ const Home = () => {
                     <div className={styles.productCard} key={product.id}>
                         <Link to={"/Products/" + product.id}>
                             <div className={styles.productImageWrapper}>
-                                {!product.attributes.saleAction === null ? <div>{product.attributes.saleAction}</div> : null}
+                                {!product.attributes.saleAction ? <div>{product.attributes.saleAction}</div> : null}
                                 <img className={styles.productImage} src={product.attributes.goldImage.data.attributes.url} alt="product" />
                                 <div className={styles.interactiveOverlay}>
                                     <div className={styles.interactiveOverlayIcons}>

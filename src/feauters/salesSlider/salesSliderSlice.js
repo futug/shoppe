@@ -25,7 +25,7 @@ const salesSliderSlice = createSlice({
 
 export const getSlides = createAsyncThunk("salesSlider/getSlides", async () => {
     const response = await axios.get(`${BASE_URL}/main-page-slider?populate=*`);
-    return response.data.data.attributes.sliderImage;
+    return response.data.data.attributes.sliderImage.data;
 });
 
 export default salesSliderSlice.reducer;
