@@ -187,6 +187,10 @@
     opacity: 1;
 }
 
+.swiper-pagination-bullet-active {
+    background: #fff !important;
+}
+
 @media (max-width: 768px) {
     .productCard {
         width: 320px;

@@ -10,9 +10,8 @@ import { getSlides } from "../feauters/salesSlider/salesSliderSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
-
-import "swiper/css/pagination";
 import styles from "./Home.module.css";
+import "swiper/css/pagination";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -78,29 +77,28 @@ const Home = () => {
             <div className={styles.productsWrapper}>
                 {randomProducts.map((product) => (
                     <div className={styles.productCard} key={product.id}>
-                        <Link to={"/Products/" + product.id}>
-                            <div className={styles.productImageWrapper}>
-                                {!product.attributes.saleAction ? <div>{product.attributes.saleAction}</div> : null}
-                                <img className={styles.productImage} src={product.attributes.goldImage.data.attributes.url} alt="product" />
-                                <div className={styles.interactiveOverlay}>
-                                    <div className={styles.interactiveOverlayIcons}>
-                                        <div className={styles.interactiveButtons}>
-                                            {" "}
-                                            <AiOutlineShoppingCart size={25} />
-                                        </div>
-                                        <div className={styles.interactiveButtons}>
-                                            <Link to={"/Products/" + product.id}>
-                                                <AiOutlineEye size={25} />
-                                            </Link>
-                                        </div>
-                                        <div className={styles.interactiveButtons}>
-                                            {" "}
-                                            <AiOutlineHeart size={25} />
-                                        </div>
+                        <div className={styles.productImageWrapper}>
+                            {!product.attributes.saleAction ? <div>{product.attributes.saleAction}</div> : null}
+                            <img className={styles.productImage} src={product.attributes.goldImage.data.attributes.url} alt="product" />
+                            <div className={styles.interactiveOverlay}>
+                                <div className={styles.interactiveOverlayIcons}>
+                                    <div className={styles.interactiveButtons}>
+                                        {" "}
+                                        <AiOutlineShoppingCart size={25} />
+                                    </div>
+                                    <div className={styles.interactiveButtons}>
+                                        <Link to={"/Products/" + product.id}>
+                                            <AiOutlineEye size={25} />
+                                        </Link>
+                                    </div>
+                                    <div className={styles.interactiveButtons}>
+                                        {" "}
+                                        <AiOutlineHeart size={25} />
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
+
                         <div className={styles.productTitle}>{product.attributes.title}</div>
                         <div className={styles.productPrice}>From $ {product.attributes.price}</div>
                     </div>

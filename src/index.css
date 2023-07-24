@@ -157,3 +157,23 @@ main {
     flex: 1 1 auto;
     border-top: 1px solid #d8d8d8;
 }
+
+.swiper-pagination {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    bottom: 20px !important;
+}
+.swiper-pagination-bullet {
+    background: #fff !important;
+    opacity: 1 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: transparent !important;
+    width: 16px !important;
+    height: 16px !important;
+    border: 1px solid #fff;
+}
