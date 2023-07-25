@@ -44,8 +44,8 @@ export const ShopFiltersBlock = () => {
                 </div>
                 <div className={styles.sortSelectField}>
                     <select className={styles.sortSelectInput} name="" id="">
-                        <option value="1">Price Up</option>
-                        <option value="2">Price Down</option>
+                        <option value="1">By Name Up</option>
+                        <option value="2">By Name Down</option>
                     </select>
                     <div className={styles.selectIco}>
                         <AiOutlineDown />

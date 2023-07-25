@@ -175,3 +175,11 @@
     height: 2px;
     width: 100%;
 }
+
+.sortSelectInput {
+    color: #000;
+}
+
+.sortSelectInput > option {
+    color: #000;
+}

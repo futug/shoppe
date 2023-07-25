@@ -22,6 +22,22 @@ const Shop = () => {
     const saleStatus = useSelector((state) => state.saleFilter);
     const stockStatus = useSelector((state) => state.stockFilter);
     const [filtersMenuIsOpen, setFiltersMenuIsOpen] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    // Обработчик события изменения размера окна браузера
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    // Добавляем обработчик события при монтировании компонента
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+
+        // Удаляем обработчик события при размонтировании компонента
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         dispatch(getProducts());
@@ -63,11 +79,13 @@ const Shop = () => {
                 <p>Filters</p>
             </div>
             <div className={styles.wrapper}>
-                <div className={styles.sideBar} style={{ transform: filtersMenuIsOpen ? "translateX(0)" : "translateX(-100%)" }}>
+                <div className={styles.sideBar} style={windowWidth <= 1100 ? { transform: filtersMenuIsOpen ? "translateX(0)" : "translateX(-100%)" } : {}}>
                     <div onClick={() => setFiltersMenuIsOpen(!filtersMenuIsOpen)} className={styles.closeIcon}>
                         <AiOutlineClose size={25} />
                     </div>
-                    <ShopFiltersBlock />
+                    <div className={styles.filters}>
+                        <ShopFiltersBlock />
+                    </div>
                 </div>
                 <section className={styles.products}>
                     <div className={styles.productsWrapper}>

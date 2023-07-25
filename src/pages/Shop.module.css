@@ -142,10 +142,12 @@
         z-index: 999;
         justify-content: center;
         align-items: center;
-        transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
     }
 
+    .filters {
+        width: 280px;
+    }
     .closeIcon {
         display: block;
         position: absolute;
