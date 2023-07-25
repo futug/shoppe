@@ -48,6 +48,7 @@ export const Navbar = () => {
                         </div>
                         <div className={styles.cart}>
                             <AiOutlineShoppingCart size={20} />
+                            <span className={styles.cartCount}>5</span>
                         </div>
                         <div className={styles.signBlock}>
                             <Link to={"/MyAccount"}>

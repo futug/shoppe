@@ -9,3 +9,10 @@
     margin: 0 auto;
     padding: 0 20px;
 }
+.priceRangeTrack {
+    height: 2px;
+}
+
+.priceRangeTrack.priceRangeTrack-1 {
+    background-color: #000;
+}

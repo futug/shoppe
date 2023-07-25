@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../feauters/products/productsSlice";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 
+//UI
 import { AiOutlineShoppingCart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
 import H1 from "../components/UI/Typography/h1/H1";
 
-import { Link } from "react-router-dom";
+//Redux states
 import { getSlides } from "../feauters/salesSlider/salesSliderSlice";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
+
+//Styles
 import styles from "./Home.module.css";
+import "swiper/css";
 import "swiper/css/pagination";
 
 const Home = () => {
@@ -78,13 +82,15 @@ const Home = () => {
                 {randomProducts.map((product) => (
                     <div className={styles.productCard} key={product.id}>
                         <div className={styles.productImageWrapper}>
-                            {!product.attributes.saleAction ? <div>{product.attributes.saleAction}</div> : null}
+                            {product.attributes.saleAction ? <div className={styles.saleTag}>{product.attributes.saleAction}</div> : null}
                             <img className={styles.productImage} src={product.attributes.goldImage.data.attributes.url} alt="product" />
                             <div className={styles.interactiveOverlay}>
                                 <div className={styles.interactiveOverlayIcons}>
                                     <div className={styles.interactiveButtons}>
                                         {" "}
-                                        <AiOutlineShoppingCart size={25} />
+                                        <div>
+                                            <AiOutlineShoppingCart size={25} />
+                                        </div>
                                     </div>
                                     <div className={styles.interactiveButtons}>
                                         <Link to={"/Products/" + product.id}>

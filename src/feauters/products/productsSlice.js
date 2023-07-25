@@ -24,7 +24,7 @@ const productsSlice = createSlice({
 });
 
 export const getProducts = createAsyncThunk("products/getProducts", async () => {
-    const response = await axios.get(`${BASE_URL}/products?populate=*`);
+    const response = await axios.get(`${BASE_URL}/products?populate=*&pagination[page]=1&pagination[pageSize]=100`);
     return response.data.data;
 });
 
