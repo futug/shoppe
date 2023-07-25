@@ -25,7 +25,7 @@ const Home = () => {
         dispatch(getSlides());
     }, [dispatch]);
 
-    const { productsList, isLoading } = useSelector((state) => state.products);
+    const { productsList, isLoading, isRejected } = useSelector((state) => state.products);
     const { salesSliderList } = useSelector((state) => state.salesSlider);
 
     const getRandomProducts = (products, count) => {
@@ -41,6 +41,10 @@ const Home = () => {
                 <div>Loading goods for you...</div>
             </div>
         );
+    }
+
+    if (isRejected) {
+        return <div className={styles.preLoader}>We are very sorry, but it looks like something went wrong :( Please try again later! </div>;
     }
 
     return (

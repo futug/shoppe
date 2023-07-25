@@ -2,6 +2,19 @@
     margin-top: 96px;
 }
 
+.settings {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    color: #a18a68;
+    cursor: pointer;
+    align-items: center;
+    display: none;
+}
+
+.settingsIcon {
+    transform: rotate(-90deg);
+}
 .wrapper {
     display: flex;
     width: 100%;
@@ -98,10 +111,18 @@
 
 .preLoader {
     height: 500px;
-    width: 100%;
+    max-width: 560px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    margin: auto auto;
+    line-height: 130%;
+    letter-spacing: 2px;
+}
+
+.closeIcon {
+    display: none;
 }
 @media (max-width: 1280px) {
     .productCard {
@@ -111,7 +132,29 @@
 
 @media (max-width: 1100px) {
     .sideBar {
-        display: none;
+        display: flex;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        z-index: 999;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .closeIcon {
+        display: block;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+    }
+
+    .settings {
+        display: flex;
     }
 
     .productsWrapper {

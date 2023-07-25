@@ -7,6 +7,7 @@ const productsSlice = createSlice({
     initialState: {
         productsList: [],
         isLoading: false,
+        isRejected: false,
     },
     extraReducers: (builder) => {
         builder.addCase(getProducts.pending, (state) => {
@@ -18,6 +19,7 @@ const productsSlice = createSlice({
         });
         builder.addCase(getProducts.rejected, (state) => {
             state.isLoading = false;
+            state.isRejected = true;
             console.log("access denied");
         });
     },

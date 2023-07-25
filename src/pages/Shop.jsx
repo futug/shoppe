@@ -2,34 +2,43 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../feauters/products/productsSlice";
 import { Link } from "react-router-dom";
-import { MIN, MAX } from "../utils/constants";
 
 import { ShopFiltersBlock } from "../components/UI/priceSlider/ShopFiltersBlock";
 
 //UI
 import H1 from "../components/UI/Typography/h1/H1";
-import { AiOutlineShoppingCart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineEye, AiOutlineHeart, AiOutlineClose } from "react-icons/ai";
+import { GiSettingsKnobs } from "react-icons/gi";
 
 //styles
 import styles from "./Shop.module.css";
 
+//!!!!!TO_DO: 1.ADD FILTERS SORT BY PRICE/NAME 2.ADD INFINITE SCROLL
 const Shop = () => {
     const dispatch = useDispatch();
 
-    const [values, setValues] = useState([MIN, MAX]);
-    const [saleStatus, setSaleStatus] = useState(false);
-    const [stockStatus, setStockStatus] = useState(false);
-    const priceRangeDifference = values[1] - values[0];
-
+    const priceRange = useSelector((state) => state.priceRange);
     const typedValue = useSelector((state) => state.typedValue);
+    const saleStatus = useSelector((state) => state.saleFilter);
+    const stockStatus = useSelector((state) => state.stockFilter);
+    const [filtersMenuIsOpen, setFiltersMenuIsOpen] = useState(false);
 
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
-    const { productsList, isLoading } = useSelector((state) => state.products);
+    const { productsList, isLoading, isRejected } = useSelector((state) => state.products);
 
     const filtredProducts = productsList.filter((product) => {
-        return product.attributes.title.toLowerCase().includes(typedValue.toLowerCase());
+        const titleMatches = product.attributes.title.toLowerCase().includes(typedValue.toLowerCase());
+        const priceMatches = product.attributes.price >= priceRange[0] && product.attributes.price <= priceRange[1];
+
+        if (saleStatus) {
+            return titleMatches && product.attributes.saleAction !== null && priceMatches;
+        } else if (stockStatus) {
+            return titleMatches && (product.attributes.stock === undefined || product.attributes.stock === null) && priceMatches;
+        }
+
+        return titleMatches && priceMatches;
     });
 
     if (isLoading) {
@@ -40,21 +49,25 @@ const Shop = () => {
         );
     }
 
+    if (isRejected) {
+        return <div className={styles.preLoader}>We are very sorry, but it looks like something went wrong :( Please try again later! </div>;
+    }
+
     return (
         <div className={styles.shop}>
             <H1>Shop the latest</H1>
+            <div onClick={() => setFiltersMenuIsOpen(!filtersMenuIsOpen)} className={styles.settings}>
+                <div className={styles.settingsIcon}>
+                    <GiSettingsKnobs color="#A18A68" />
+                </div>
+                <p>Filters</p>
+            </div>
             <div className={styles.wrapper}>
-                <div className={styles.sideBar}>
-                    <ShopFiltersBlock
-                        values={values}
-                        setValues={setValues}
-                        typedValue={typedValue}
-                        // setTypedValue={setTypedValue}
-                        saleStatus={saleStatus}
-                        setSaleStatus={setSaleStatus}
-                        stockStatus={stockStatus}
-                        setStockStatus={setStockStatus}
-                    />
+                <div className={styles.sideBar} style={{ transform: filtersMenuIsOpen ? "translateX(0)" : "translateX(-100%)" }}>
+                    <div onClick={() => setFiltersMenuIsOpen(!filtersMenuIsOpen)} className={styles.closeIcon}>
+                        <AiOutlineClose size={25} />
+                    </div>
+                    <ShopFiltersBlock />
                 </div>
                 <section className={styles.products}>
                     <div className={styles.productsWrapper}>

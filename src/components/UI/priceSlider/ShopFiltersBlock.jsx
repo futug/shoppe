@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MIN, MAX } from "../../../utils/constants";
 import { updateTypedValue } from "../../../feauters/filters/typedValueSlice";
-
+import { updateSaleFilter } from "../../../feauters/filters/saleFilterSlice";
+import { updateStockFilter } from "../../../feauters/filters/stockFilterSlice";
+import { updatePriceRange } from "../../../feauters/filters/priceRangeSlice";
 //UI
 import { AiOutlineSearch, AiOutlineDown } from "react-icons/ai";
 import ReactSlider from "react-slider";
@@ -12,12 +14,10 @@ import styles from "./ShopFiltersBlock.module.css";
 import "../../../App.css";
 
 export const ShopFiltersBlock = () => {
-    const [values, setValues] = useState([MIN, MAX]);
-
+    const priceRange = useSelector((state) => state.priceRange);
     const typedValue = useSelector((state) => state.typedValue);
-    const [saleStatus, setSaleStatus] = useState(false);
-    const [stockStatus, setStockStatus] = useState(false);
-    const priceRangeDifference = values[1] - values[0];
+    const saleStatus = useSelector((state) => state.saleFilter);
+    const stockStatus = useSelector((state) => state.stockFilter);
 
     const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ export const ShopFiltersBlock = () => {
         const newValue = e.target.value;
         dispatch(updateTypedValue(newValue));
     };
+
     return (
         <div className={styles.filtersBlock}>
             <div className={styles.searchField}>
@@ -56,15 +57,15 @@ export const ShopFiltersBlock = () => {
                     className={styles.priceRangeSlider}
                     thumbClassName={styles.priceRangeThumb}
                     trackClassName={"priceRangeTrack"}
-                    value={values}
+                    value={priceRange}
                     min={MIN}
                     max={MAX}
-                    onChange={setValues}
+                    onChange={(newValue) => dispatch(updatePriceRange(newValue))}
                 />
             </div>
             <div className={styles.priceRangeControls}>
                 <p className={styles.priceRangeVisual}>
-                    Price: ${values[0]} - ${values[1]}
+                    Price: ${priceRange[0]} - ${priceRange[1]}
                 </p>
                 <p className={styles.priceRangeFilterButton}>Filter</p>
             </div>
@@ -72,14 +73,14 @@ export const ShopFiltersBlock = () => {
                 <div className={styles.switchToggleField}>
                     <p className={styles.switchToggleLabel}>On Sale</p>
                     <label className={styles.switch}>
-                        <input onChange={() => setSaleStatus(!saleStatus)} className={styles.switchToggleInput} type="checkbox" />
+                        <input onChange={() => dispatch(updateSaleFilter(!saleStatus))} className={styles.switchToggleInput} type="checkbox" />
                         <span className={styles.slider}></span>
                     </label>
                 </div>
                 <div className={styles.switchToggleField}>
                     <p className={styles.switchToggleLabel}>In Stock</p>
                     <label className={styles.switch}>
-                        <input onChange={() => setStockStatus(!stockStatus)} className={styles.switchToggleInput} type="checkbox" />
+                        <input onChange={() => dispatch(updateStockFilter(!stockStatus))} className={styles.switchToggleInput} type="checkbox" />
                         <span className={styles.slider}></span>
                     </label>
                 </div>

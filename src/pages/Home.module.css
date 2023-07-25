@@ -1,9 +1,13 @@
 .preLoader {
     height: 500px;
-    width: 100%;
+    max-width: 560px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    margin: auto auto;
+    line-height: 130%;
+    letter-spacing: 2px;
 }
 
 .slideWrapper {
