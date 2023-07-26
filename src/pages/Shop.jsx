@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../feauters/products/productsSlice";
+import { addToCart } from "../feauters/cart/cartSlice";
 import { Link } from "react-router-dom";
 
 import { ShopFiltersBlock } from "../components/UI/priceSlider/ShopFiltersBlock";
@@ -21,19 +22,15 @@ const Shop = () => {
     const typedValue = useSelector((state) => state.typedValue);
     const saleStatus = useSelector((state) => state.saleFilter);
     const stockStatus = useSelector((state) => state.stockFilter);
+    const cart = useSelector((state) => state.cart);
     const [filtersMenuIsOpen, setFiltersMenuIsOpen] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    // Обработчик события изменения размера окна браузера
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
     };
-
-    // Добавляем обработчик события при монтировании компонента
     useEffect(() => {
         window.addEventListener("resize", handleResize);
-
-        // Удаляем обработчик события при размонтировании компонента
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -41,6 +38,7 @@ const Shop = () => {
 
     useEffect(() => {
         dispatch(getProducts());
+        dispatch(addToCart([]));
     }, [dispatch]);
     const { productsList, isLoading, isRejected } = useSelector((state) => state.products);
 
@@ -56,7 +54,6 @@ const Shop = () => {
 
         return titleMatches && priceMatches;
     });
-
     if (isLoading) {
         return (
             <div className={styles.preLoader}>
@@ -98,7 +95,7 @@ const Shop = () => {
                                         <div className={styles.interactiveOverlayIcons}>
                                             <div className={styles.interactiveButtons}>
                                                 {" "}
-                                                <div>
+                                                <div onClick={() => dispatch(addToCart(product))}>
                                                     <AiOutlineShoppingCart size={25} />
                                                 </div>
                                             </div>

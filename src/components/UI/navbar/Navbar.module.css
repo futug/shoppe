@@ -140,6 +140,140 @@ svg {
     gap: 20px;
     /* transform: translateY(-30%); */
 }
+
+.cartWrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    height: 100vh;
+    width: 360px;
+    border: 1px solid #d8d8d8;
+    background-color: #fff;
+
+    transition: 0.5s ease-in-out;
+}
+
+.cartContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 36px;
+    height: 100%;
+}
+
+.cartHeader {
+    width: 100%;
+    margin-top: 72px;
+}
+
+.cartHeaderTitleGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cartTitle {
+    font-size: 16px;
+}
+
+.cartClose {
+    display: none;
+    cursor: pointer;
+}
+
+.cartBody {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow-y: scroll;
+    height: 70%;
+}
+
+.totalQuantity {
+    font-size: 12px;
+    color: #707070;
+    margin-top: 17px;
+}
+
+.cartItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cartItemImageWrapper {
+    background-color: #fbf8f4;
+    width: 136px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+}
+
+.cartItemImage {
+    width: 136px;
+}
+
+.cartItemDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* justify-self: center; */
+    margin-left: 8px;
+    width: 100%;
+}
+
+.cartItemTitle {
+    font-size: 14px;
+}
+
+.cartItemPrice {
+    color: #a18a68;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.cartItemQuantity {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 12px;
+    color: #707070;
+}
+
+.cartItemQuantity > button {
+    display: flex;
+    border: none;
+    background-color: transparent;
+}
+
+.cartItemRemove {
+    justify-self: end;
+}
+
+.cartTotal {
+    display: flex;
+    justify-content: space-between;
+    margin: 21px 0;
+}
+
+.cartAddSign {
+    position: absolute;
+    top: 100%;
+    background-color: #efefef;
+    width: 100%;
+    height: fit-content;
+    padding: 24px 0;
+    border-top: #a18a68 solid 2px;
+    display: flex;
+    display: none;
+}
+
+.cartAddSignContent {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 39px;
+}
 @media (max-width: 768px) {
     .burger {
         display: block;
@@ -158,5 +292,23 @@ svg {
     }
     .interactive {
         gap: 17px;
+    }
+}
+
+@media (max-width: 575px) {
+    .cartWrapper {
+        width: 100%;
+    }
+
+    .cartClose {
+        display: block;
+    }
+
+    .cartAddSign {
+        justify-content: center;
+    }
+    .cartAddSignContent {
+        font-size: 12px;
+        margin-left: 0;
     }
 }

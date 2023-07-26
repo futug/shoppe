@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../feauters/products/productsSlice";
+import { addToCart } from "../feauters/cart/cartSlice";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -27,6 +28,7 @@ const Home = () => {
 
     const { productsList, isLoading, isRejected } = useSelector((state) => state.products);
     const { salesSliderList } = useSelector((state) => state.salesSlider);
+    const cart = useSelector((state) => state.cart);
 
     const getRandomProducts = (products, count) => {
         const shuffledProducts = [...products].sort(() => 0.5 - Math.random());
@@ -92,7 +94,7 @@ const Home = () => {
                                 <div className={styles.interactiveOverlayIcons}>
                                     <div className={styles.interactiveButtons}>
                                         {" "}
-                                        <div>
+                                        <div onClick={() => dispatch(addToCart(product))}>
                                             <AiOutlineShoppingCart size={25} />
                                         </div>
                                     </div>
