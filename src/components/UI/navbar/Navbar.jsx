@@ -12,6 +12,8 @@ import { AiFillCheckCircle, AiOutlineClose, AiOutlineMenu, AiOutlineMinus, AiOut
 import { MdPersonOutline, MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link } from "react-router-dom";
 
+//TODO: 1.FIX THE CART CLOSE ISSUE 2.ANIMATION OF REMOVE ITEMS
+
 export const Navbar = () => {
     // Redux
     const dispatch = useDispatch();
@@ -135,7 +137,7 @@ export const Navbar = () => {
                                 <p>Subtotal ({totalQuantity})</p>
                                 <p>$&nbsp;{totalPrice}</p>
                             </div>
-                            <div className={styles.cartButton}>
+                            <div onClick={handleCart} className={styles.cartButton}>
                                 <Link to={"/Cart"}>
                                     <AddToCart>View Cart</AddToCart>
                                 </Link>
