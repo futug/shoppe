@@ -4,6 +4,7 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: {
         items: [],
+        addedToCart: false,
     },
     reducers: {
         addToCart: (state, action) => {
@@ -15,6 +16,7 @@ const cartSlice = createSlice({
             } else {
                 state.items.push({ ...action.payload, quantity: quantity || 1 });
             }
+            state.addedToCart = true;
         },
         removeFromCart: (state, action) => {
             const { id, quantity } = action.payload;
