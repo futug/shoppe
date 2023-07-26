@@ -146,7 +146,7 @@ svg {
     top: 0;
     right: 0;
     z-index: 999;
-    height: 100vmax;
+    height: 100vh;
     width: 360px;
     border: 1px solid #d8d8d8;
     background-color: #fff;
@@ -187,7 +187,7 @@ svg {
     flex-direction: column;
     gap: 22px;
     overflow-y: scroll;
-    max-height: 50%;
+    max-height: 100%;
 }
 
 .totalQuantity {
@@ -273,6 +273,10 @@ svg {
     align-items: center;
     gap: 16px;
     margin-left: 39px;
+}
+
+.cartButton {
+    padding-bottom: 27px;
 }
 @media (max-width: 768px) {
     .burger {

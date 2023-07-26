@@ -4,21 +4,27 @@ import styles from "./Navbar.module.css";
 import H5 from "../Typography/h5/H5";
 import AddToCart from "../buttons/addButton/AddToCart";
 
-// images&icons
+// Images & Icons
 import LOGO from "../../../images/SHOPPE.svg";
 import { AiFillCheckCircle, AiOutlineClose, AiOutlineMenu, AiOutlineMinus, AiOutlinePlus, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { MdPersonOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+    // Redux
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
+
+    // Local state
     const [searchIsActive, setSearchIsActive] = useState(false);
     const [cartIsOpen, setCartIsOpen] = useState(false);
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
 
+    // Refs
     const cartMenuRef = useRef();
     const cartIcoRef = useRef();
 
+    // Handlers
     const handleCart = () => {
         setCartIsOpen(!cartIsOpen);
     };
@@ -27,11 +33,11 @@ export const Navbar = () => {
         setSearchIsActive(!searchIsActive);
     };
 
-    const [menuIsOpen, setMenuIsOpen] = useState(false);
     const handleMenu = () => {
         setMenuIsOpen(!menuIsOpen);
     };
 
+    // Effects
     useEffect(() => {
         document.body.style.overflow = menuIsOpen || cartIsOpen ? "hidden" : "auto";
 
@@ -49,12 +55,16 @@ export const Navbar = () => {
         };
     }, [menuIsOpen, cartIsOpen]);
 
+    // Calculate total quantity of items in cart
     const items = cart?.items;
+    let updatedItems = [];
+    if (items && items.length > 0) {
+        updatedItems = [...items.slice(1)];
+    }
 
-    const totalQuantity = items.slice(1).reduce((total, item) => {
-        return total + item.quantity;
-    }, 0);
+    const totalQuantity = updatedItems.reduce((total, item) => total + item.quantity, 0);
 
+    // Calculate total price of items in cart
     const totalPrice = items.reduce((total, item) => {
         if (item && item.attributes && item.attributes.price) {
             const itemTotal = item.quantity * item.attributes.price;
@@ -63,13 +73,14 @@ export const Navbar = () => {
         return total;
     }, 0);
 
-    console.log(totalQuantity);
-
     return (
         <header>
             <div className={styles.Navbar}>
+                {/* Cart Wrapper */}
                 <div ref={cartMenuRef} className={styles.cartWrapper} style={{ transform: cartIsOpen ? "translateX(0)" : "translateX(100%)" }}>
+                    {/* Cart Content */}
                     <div className={styles.cartContent}>
+                        {/* Cart Header */}
                         <div className={styles.cartHeader}>
                             <div className={styles.cartHeaderTitleGroup}>
                                 <div className={styles.cartTitle}>Shopping Bag</div>
@@ -79,7 +90,7 @@ export const Navbar = () => {
                             </div>
                             <p className={styles.totalQuantity}>{totalQuantity} items</p>
                         </div>
-
+                        {/* Cart Body */}
                         <div className={styles.cartBody}>
                             {items.map((item) => {
                                 if (!item || !item.attributes) {
@@ -115,13 +126,14 @@ export const Navbar = () => {
                                 );
                             })}
                         </div>
+                        {/* Cart Footer */}
                         <div className={styles.cartFooter}>
                             <hr />
                             <div className={styles.cartTotal}>
                                 <p>Subtotal ({totalQuantity})</p>
                                 <p>$&nbsp;{totalPrice}</p>
                             </div>
-                            <div>
+                            <div className={styles.cartButton}>
                                 <Link to={"/Cart"}>
                                     <AddToCart>View Cart</AddToCart>
                                 </Link>
@@ -129,12 +141,17 @@ export const Navbar = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Logo */}
                 <div className={styles.logoGroup}>
                     <Link to={"/"}>
                         <img className={styles.logo} src={LOGO} alt="logo" />
                     </Link>
                 </div>
+
+                {/* Right Side */}
                 <div className={styles.rightSide}>
+                    {/* Link Group */}
                     <div className={styles.linkGroup}>
                         <Link className={styles.link} to={"/Shop"}>
                             <H5>Shop</H5>
@@ -146,7 +163,11 @@ export const Navbar = () => {
                             <H5>Our Story</H5>
                         </Link>
                     </div>
+
+                    {/* Separator */}
                     <div className={styles.separator}></div>
+
+                    {/* Interactive */}
                     <div className={styles.interactive}>
                         <div className={styles.searchBlock} onClick={handleSearch}>
                             <AiOutlineSearch size={20} />
@@ -165,6 +186,8 @@ export const Navbar = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Cart Add Sign */}
                 <div className={styles.cartAddSign}>
                     <div className={styles.cartAddSignContent}>
                         <span>
@@ -174,10 +197,12 @@ export const Navbar = () => {
                     </div>
                 </div>
             </div>
+            {/* Search Field */}
             <div className={styles.searchField}>
                 <input className={styles.searchInput} type="search" />
                 <AiOutlineSearch size={20} />
             </div>
+            {/* Menu */}
             <div className={styles.menu} style={menuIsOpen ? { height: "100vh" } : null}>
                 <div className={styles.content} onClick={handleMenu}>
                     <div>

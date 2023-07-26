@@ -34,16 +34,16 @@ export const ShopFiltersBlock = () => {
             </div>
             <div className={styles.sortOptions}>
                 <div className={styles.sortSelectField}>
-                    <select className={styles.sortSelectInput} name="" id="">
-                        <option value="1">Price Up</option>
-                        <option value="2">Price Down</option>
+                    <select className={styles.sortSelectInput}>
+                        <option value="1">By Price Up</option>
+                        <option value="2">By Price Down</option>
                     </select>
                     <div className={styles.selectIco}>
                         <AiOutlineDown />
                     </div>
                 </div>
                 <div className={styles.sortSelectField}>
-                    <select className={styles.sortSelectInput} name="" id="">
+                    <select className={styles.sortSelectInput}>
                         <option value="1">By Name Up</option>
                         <option value="2">By Name Down</option>
                     </select>
