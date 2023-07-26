@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import { removeFromCart, incrementQuantity, dicrementQuantity } from "../../../feauters/cart/cartSlice";
 import styles from "./Navbar.module.css";
 import H5 from "../Typography/h5/H5";
 import AddToCart from "../buttons/addButton/AddToCart";
@@ -110,16 +112,16 @@ export const Navbar = () => {
                                             </div>
                                             <div className={styles.cartItemQuantity}>
                                                 QTY :
-                                                <button>
+                                                <button onClick={() => dispatch(dicrementQuantity(item))}>
                                                     <AiOutlineMinus size={8} />
                                                 </button>
                                                 {item.quantity}
-                                                <button>
+                                                <button onClick={() => dispatch(incrementQuantity(item))}>
                                                     <AiOutlinePlus size={8} />
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className={styles.cartItemRemove}>
+                                        <div onClick={() => dispatch(removeFromCart(item))} className={styles.cartItemRemove}>
                                             <AiOutlineClose size={10} />
                                         </div>
                                     </div>
