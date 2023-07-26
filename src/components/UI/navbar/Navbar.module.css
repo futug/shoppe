@@ -146,7 +146,7 @@ svg {
     top: 0;
     right: 0;
     z-index: 999;
-    height: 100vh;
+    height: 100%;
     width: 360px;
     border: 1px solid #d8d8d8;
     background-color: #fff;
@@ -170,11 +170,13 @@ svg {
 
 .cartHeaderTitleGroup {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
     align-items: center;
 }
 .cartTitle {
     font-size: 16px;
+    text-align: center;
+    width: 100%;
 }
 
 .cartClose {
@@ -306,6 +308,10 @@ svg {
 
     .cartClose {
         display: block;
+    }
+
+    .cartHeader {
+        margin-top: 13px;
     }
 
     .cartAddSign {

@@ -7,7 +7,7 @@ import AddToCart from "../buttons/addButton/AddToCart";
 // Images & Icons
 import LOGO from "../../../images/SHOPPE.svg";
 import { AiFillCheckCircle, AiOutlineClose, AiOutlineMenu, AiOutlineMinus, AiOutlinePlus, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
-import { MdPersonOutline } from "react-icons/md";
+import { MdPersonOutline, MdOutlineArrowBackIosNew } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -83,10 +83,10 @@ export const Navbar = () => {
                         {/* Cart Header */}
                         <div className={styles.cartHeader}>
                             <div className={styles.cartHeaderTitleGroup}>
-                                <div className={styles.cartTitle}>Shopping Bag</div>
                                 <div className={styles.cartClose} onClick={handleCart}>
-                                    <AiOutlineClose size={15} />
+                                    <MdOutlineArrowBackIosNew size={15} />
                                 </div>
+                                <div className={styles.cartTitle}>Shopping Bag</div>
                             </div>
                             <p className={styles.totalQuantity}>{totalQuantity} items</p>
                         </div>
