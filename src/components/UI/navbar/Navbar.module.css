@@ -146,7 +146,7 @@ svg {
     top: 0;
     right: 0;
     z-index: 999;
-    height: 100vh;
+    height: 100vmax;
     width: 360px;
     border: 1px solid #d8d8d8;
     background-color: #fff;
@@ -187,7 +187,7 @@ svg {
     flex-direction: column;
     gap: 22px;
     overflow-y: scroll;
-    height: 70%;
+    max-height: 50%;
 }
 
 .totalQuantity {
