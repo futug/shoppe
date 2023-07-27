@@ -1,0 +1,266 @@
+.productCard {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    padding-bottom: 100px;
+    column-gap: 62px;
+}
+
+.productImagesWraper {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
+.productImagesThumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.productImagesThumb {
+    width: 120px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fbf8f4;
+}
+
+.productThumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.productImagesMain {
+    width: 540px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fbf8f4;
+}
+
+.productImageMain {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.productImagesScrollTrack {
+    width: 100%;
+    height: 2px;
+    background-color: #d8d8d8;
+    margin: 24px 0 0 auto;
+    cursor: pointer;
+}
+
+.productImagesScrollThumb {
+    height: 100%;
+    object-fit: cover;
+    background-color: #707070;
+    cursor: grabbing;
+    transition: 0.3s ease-in-out all;
+}
+
+.productInfo {
+}
+
+.productPrice {
+    color: #a18a68;
+    margin-top: 23px;
+}
+
+.productShare {
+    color: #000;
+    display: none;
+}
+
+.productRating {
+    display: flex;
+    margin-top: 70px;
+    gap: 24px;
+    align-items: center;
+}
+.productRatingStars {
+    display: flex;
+    gap: 10px;
+}
+
+.productRatingReviews {
+    font-size: 16px;
+    color: #707070;
+}
+
+.productDescription {
+    max-width: 484px;
+    margin-top: 19px;
+}
+
+.productToCartControls {
+    display: flex;
+    gap: 23px;
+    margin-top: 48px;
+}
+
+.productQuantity {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 4px;
+    background-color: #efefef;
+    color: #707070;
+}
+
+.productQuantity > button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+.productAddToCart {
+    height: 100%;
+}
+.productSocialMedia {
+    display: flex;
+    gap: 39px;
+    align-items: center;
+    color: #707070;
+    font-size: 21px;
+    margin-top: 80px;
+}
+
+.socialMediaSeparator {
+    width: 1px;
+    height: 16px;
+    margin-top: -4px;
+    background-color: #707070;
+}
+
+.prosuctSocialMediaLinks {
+    display: flex;
+    gap: 24px;
+}
+
+.productAttributes {
+    margin-top: 37px;
+    font-size: 16px;
+    color: #000;
+}
+
+.productCategories {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #000;
+}
+
+.productSecondary {
+    color: #707070;
+}
+
+.button {
+    padding: 8px 103px;
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    cursor: pointer;
+    display: block;
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.socialIco {
+    transition: all 0.4s ease-in-out;
+}
+.socialIco :hover {
+    color: #000;
+}
+
+@media (max-width: 1280px) {
+    .productCard {
+        grid-template-columns: 100%;
+        row-gap: 30px;
+    }
+    .productCardLeftSide {
+        justify-self: center;
+    }
+    .productInfo {
+        justify-self: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .productImagesThumbs {
+        display: none;
+    }
+
+    .productImagesMain {
+        width: 500px;
+    }
+}
+
+@media (max-width: 575px) {
+    .productImagesMain {
+        width: 450px;
+    }
+
+    .productRating {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .productImagesMain {
+        width: 350px;
+    }
+
+    .productPrice {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .productShare {
+        display: block;
+    }
+
+    .productQuantity {
+        display: none;
+    }
+
+    .productToCartControls {
+        width: 100%;
+        text-align: center;
+    }
+    .button {
+        margin: 0 auto;
+        letter-spacing: -1px;
+    }
+
+    .productSocialMedia {
+        display: none;
+    }
+
+    .productAttributes {
+        display: none;
+    }
+    .productCategories {
+        display: none;
+    }
+}
+
+@media (max-width: 375px) {
+    .productImagesMain {
+        width: 288px;
+        height: 374px;
+    }
+}

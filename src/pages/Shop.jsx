@@ -40,6 +40,7 @@ const Shop = () => {
         dispatch(getProducts());
         dispatch(addToCart([]));
     }, [dispatch]);
+
     const { productsList, isLoading, isRejected } = useSelector((state) => state.products);
 
     const filtredProducts = productsList.filter((product) => {

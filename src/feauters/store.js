@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // localStorage в качестве хранилища
-import { combineReducers } from "redux"; // Импортируем функцию для объединения редьюсеров
+import storage from "redux-persist/lib/storage";
+import { combineReducers } from "redux";
 import categoriesSlice from "./categories/categoriesSlice";
 import productsSlice from "./products/productsSlice";
 import salesSliderSlice from "./salesSlider/salesSliderSlice";
@@ -10,10 +10,12 @@ import typedValueSlice from "./filters/typedValueSlice";
 import saleFilterSlice from "./filters/saleFilterSlice";
 import stockFilterSlice from "./filters/stockFilterSlice";
 import priceRangeSlice from "./filters/priceRangeSlice";
+import productByIdSlice from "./productById/productByIdSlice";
 
 const persistConfig = {
     key: "root",
     storage,
+    whitelist: ["cart"],
 };
 
 const rootReducer = combineReducers({
@@ -25,6 +27,7 @@ const rootReducer = combineReducers({
     saleFilter: saleFilterSlice,
     stockFilter: stockFilterSlice,
     priceRange: priceRangeSlice,
+    productById: productByIdSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -32,7 +35,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware({
-        serializableCheck: false, // Избегаем ошибок сериализации, так как используем redux-persist
+        serializableCheck: false,
     }),
     devTools: true,
 });

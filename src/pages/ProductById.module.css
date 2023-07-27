@@ -1,0 +1,15 @@
+.preLoader {
+    height: 500px;
+    max-width: 560px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto auto;
+    line-height: 130%;
+    letter-spacing: 2px;
+}
+
+.ProductById {
+    margin-top: 128px;
+}
