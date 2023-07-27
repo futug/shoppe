@@ -17,6 +17,19 @@ const cartSlice = createSlice({
                 state.items.push({ ...action.payload, quantity: quantity || 1 });
             }
             state.addedToCart = true;
+
+            function scrollToTop() {
+                if ("scrollBehavior" in document.documentElement.style) {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                    });
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            scrollToTop();
         },
         removeFromCart: (state, action) => {
             const { id, quantity } = action.payload;
