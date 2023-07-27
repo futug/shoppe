@@ -13,3 +13,9 @@
 .ProductById {
     margin-top: 128px;
 }
+
+@media (max-width: 575px) {
+    .ProductById {
+        margin-top: 30px;
+    }
+}
