@@ -67,6 +67,29 @@ const ProductByIdCard = (props) => {
 
     console.log(props.fullProduct);
 
+    //swipes
+
+    const [touchStartX, setTouchStartX] = useState(null);
+    const [touchEndX, setTouchEndX] = useState(null);
+    const handleTouchStart = (e) => {
+        setTouchStartX(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = (e) => {
+        setTouchEndX(e.changedTouches[0].clientX);
+    };
+    useEffect(() => {
+        const minSwipeDistance = 50;
+
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (swipeDistance > minSwipeDistance) {
+            setCurrentIndex((prevIndex) => (prevIndex === 0 ? props.images.length - 1 : prevIndex - 1));
+        } else if (swipeDistance < -minSwipeDistance) {
+            setCurrentIndex((prevIndex) => (prevIndex === props.images.length - 1 ? 0 : prevIndex + 1));
+        }
+    }, [touchStartX, touchEndX]);
+
     return (
         <div className={styles.productCard}>
             <div className={styles.productCardLeftSide}>
@@ -84,7 +107,7 @@ const ProductByIdCard = (props) => {
                         })}
                     </div>
                     <div>
-                        <div className={styles.productImagesMain}>
+                        <div onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className={styles.productImagesMain}>
                             <img className={styles.productImageMain} src={shownImage} alt="full product" />
                         </div>
                         <div onClick={handleScrollBarClick} ref={scrollTrack} className={styles.productImagesScrollTrack}>
