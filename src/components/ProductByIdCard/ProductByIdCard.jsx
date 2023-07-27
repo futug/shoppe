@@ -79,7 +79,7 @@ const ProductByIdCard = (props) => {
         setTouchEndX(e.changedTouches[0].clientX);
     };
     useEffect(() => {
-        const minSwipeDistance = 50;
+        const minSwipeDistance = 200;
 
         const swipeDistance = touchEndX - touchStartX;
 
