@@ -18,4 +18,10 @@
     .ProductById {
         margin-top: 30px;
     }
+
+    .seporator {
+        width: 100%;
+        height: 1px;
+        background-color: #d8d8d8;
+    }
 }

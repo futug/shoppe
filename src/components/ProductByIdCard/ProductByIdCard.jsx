@@ -125,7 +125,9 @@ const ProductByIdCard = (props) => {
             </div>
 
             <div className={styles.productInfo}>
-                <H2>{props.fullProduct?.attributes?.title}</H2>
+                <div className={styles.productTitle}>
+                    <H2>{props.fullProduct?.attributes?.title}</H2>
+                </div>
                 <div className={styles.productPrice}>
                     <H4>$ {props.fullProduct?.attributes?.price}</H4>
                     <div className={styles.productShare}>
@@ -153,9 +155,7 @@ const ProductByIdCard = (props) => {
                         </button>
                     </div>
 
-                    <button onClick={handleAddToCart} className={styles.button}>
-                        add to cart
-                    </button>
+                    <AddToCart onClick={handleAddToCart}>add to cart</AddToCart>
                 </div>
 
                 <div className={styles.productSocialMedia}>

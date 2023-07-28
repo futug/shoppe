@@ -1,0 +1,91 @@
+.tabs {
+    padding-bottom: 96px;
+    overflow: hidden;
+}
+
+.tabLabelsField {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 96px;
+    color: #707070;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.tabLabel {
+    padding-bottom: 34px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    position: relative;
+}
+
+.tabLabel::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    top: 100%;
+    transition: width 0.3s ease-in-out;
+}
+
+.tabLabel:hover {
+    color: #000;
+}
+
+.tabLabel:hover::after {
+    width: 100%;
+}
+
+.tabLabelActive {
+    color: #000;
+}
+
+.tabLabelActive::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    top: 100%;
+}
+.tabsContent {
+    width: 300%;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.6s ease-in-out;
+}
+.infoField {
+    width: 100%;
+    margin-top: 39px;
+    transition: all 0.6s ease-in-out;
+}
+
+.tabDescription {
+    font-size: 16px;
+    color: #707070;
+    line-height: 130%;
+    width: 100%;
+}
+
+.tabAdditionalInformation {
+    font-size: 16px;
+    margin-top: 16px;
+}
+
+.tabAdditionalInformation:first-child {
+    margin-top: 0;
+}
+
+.tabAdditionalInformation > span {
+    color: #707070;
+}
+
+@media (max-width: 630px) {
+    .tabLabel {
+        font-size: 16px;
+    }
+}

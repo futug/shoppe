@@ -220,13 +220,39 @@
 }
 
 @media (max-width: 480px) {
+    .productCard {
+        padding-bottom: 14px;
+    }
     .productImagesMain {
         width: 350px;
+    }
+
+    .productInfo {
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
     }
 
     .productPrice {
         display: flex;
         justify-content: space-between;
+        margin-top: 5px;
+        order: 2;
+    }
+
+    .productTitle {
+        order: 1;
+    }
+
+    .productToCartControls {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .productDescription {
+        order: 4;
     }
 
     .productShare {
@@ -237,10 +263,6 @@
         display: none;
     }
 
-    .productToCartControls {
-        width: 100%;
-        text-align: center;
-    }
     .button {
         margin: 0 auto;
         letter-spacing: -1px;

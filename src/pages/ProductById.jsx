@@ -2,12 +2,18 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../feauters/productById/productByIdSlice";
+import { createBreakpoint } from "react-use";
 
 //styles
 import styles from "./ProductById.module.css";
 import ProductByIdCard from "../components/ProductByIdCard/ProductByIdCard";
+import ProductInformDesc from "../components/ProductInformDesc/ProductInformDesc";
+
+const useBreakpoint = createBreakpoint({ S: 425, M: 576, L: 992, XL: 1200 });
 
 const ProductById = () => {
+    const breakpoint = useBreakpoint();
+
     const { id } = useParams();
     const dispatch = useDispatch();
     useEffect(() => {
@@ -40,6 +46,8 @@ const ProductById = () => {
         <div>
             <div className={styles.ProductById}>
                 <ProductByIdCard images={images} fullProduct={fullProduct} />
+                <div className={styles.seporator}></div>
+                {breakpoint !== "S" ? <ProductInformDesc fullProduct={fullProduct} /> : null}
             </div>
         </div>
     );

@@ -1,0 +1,157 @@
+.productReviews {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.productReviewsTitle {
+    padding-bottom: 52px;
+    font-size: 20px;
+}
+
+.productReviewItem {
+    margin-top: 24px;
+}
+
+.productReviewCardTitle {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.productReviewCardName {
+    font-size: 20px;
+}
+
+.productReviewCardDate {
+    font-size: 14px;
+    color: #707070;
+}
+
+.productReviewCardRaiting {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: default;
+}
+
+.productReviewCardseparator {
+    width: 100%;
+    height: 1px;
+    background-color: #d8d8d8;
+    margin-top: 39px;
+}
+
+.productReviewCardBody {
+    max-width: 580px;
+    margin-top: 24px;
+    font-size: 16px;
+    color: #707070;
+}
+
+.starIco {
+    cursor: default;
+}
+
+.productReviewsForm {
+    width: 100%;
+}
+
+.productReviewsFormField {
+    width: 100%;
+    border-bottom: #d8d8d8 solid 1px;
+    margin-top: 46px;
+}
+
+.productInputForReview {
+    display: block;
+    width: 100%;
+    border: none;
+    resize: none;
+    background-color: transparent;
+    padding: 0 0 13px 0;
+    outline: none;
+}
+
+.textarea {
+    padding-bottom: 61px;
+    display: block;
+    width: 100%;
+    border: none;
+    resize: none;
+    background-color: transparent;
+}
+
+.productInputForReview::placeholder {
+    font-size: 14px;
+}
+
+.productReviewsSubtitle {
+    font-size: 13px;
+    color: #707070;
+    margin-top: 11px;
+}
+
+.rightTitle {
+    padding-bottom: 76px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #707070;
+    gap: 8px;
+    margin-top: 26px;
+}
+
+.rateField {
+    margin-top: 46px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rateFieldTitle {
+    font-size: 14px;
+    color: #707070;
+}
+
+.rateFieldStars {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.productReviewsSubmit {
+    margin-top: 48px;
+    width: fit-content;
+}
+
+.productReviewsSubmit > button {
+    background-color: #000;
+    color: #fff;
+    padding: 16px 34px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    box-sizing: border-box;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.productReviewsSubmit > button:hover {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+@media (max-width: 1280px) {
+    .productReviews {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 39px;
+    }
+}
