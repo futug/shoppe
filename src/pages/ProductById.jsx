@@ -8,6 +8,7 @@ import { createBreakpoint } from "react-use";
 import styles from "./ProductById.module.css";
 import ProductByIdCard from "../components/ProductByIdCard/ProductByIdCard";
 import ProductInformDesc from "../components/ProductInformDesc/ProductInformDesc";
+import RandomProducts from "../components/RandomProducts/RandomProducts";
 
 const useBreakpoint = createBreakpoint({ S: 425, M: 576, L: 992, XL: 1200 });
 
@@ -29,7 +30,6 @@ const ProductById = () => {
     ].filter((image) => image !== null && image !== undefined);
 
     const fullProduct = productById;
-    console.log(fullProduct);
     if (isLoading) {
         return (
             <div className={styles.preLoader}>
@@ -48,6 +48,7 @@ const ProductById = () => {
                 <ProductByIdCard images={images} fullProduct={fullProduct} />
                 <div className={styles.seporator}></div>
                 {breakpoint !== "S" ? <ProductInformDesc fullProduct={fullProduct} /> : null}
+                <RandomProducts />
             </div>
         </div>
     );

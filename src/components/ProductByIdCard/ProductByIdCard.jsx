@@ -65,8 +65,6 @@ const ProductByIdCard = (props) => {
         setShownImage(props.images[currentIndex]?.url);
     }, [props.images, currentIndex]);
 
-    console.log(props.fullProduct);
-
     //swipes
 
     const [touchStartX, setTouchStartX] = useState(null);
